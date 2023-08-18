@@ -7,6 +7,8 @@ const MySQLStore = require('express-mysql-session')(session); // Importa express
 const configura = require('./configdb');
 const app = express();
 
+const port = process.env.PORT || configura.PORT; 
+
 //importing routes
 const usuariosRoutes = require('./routes/usuarios');
 
@@ -52,6 +54,6 @@ app.use('/', usuariosRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 
 //coneccion servidor
-app.listen(configura.PORT, () => {
-  console.log(`Servidor escuchando en esta ruta http://localhost:${configura.PORT}`);
+app.listen(port, "0.0.0.0", () => { // Cambia el puerto a 'port'
+  console.log(`Servidor escuchando en esta ruta http://localhost:${port}`);
 });

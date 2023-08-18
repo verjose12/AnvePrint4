@@ -1,64 +1,85 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Encabezado */
 header {
     background-color: #000;
     color: #fff;
-    padding: 1%;
+    padding: 1rem;
+    text-align: center; /* Centra el texto en dispositivos móviles */
 }
 
-.Logo img{
-    width: 70%;
+.Logo img {
+    width: 100%; /* Ajusta el ancho de la imagen al 100% */
+    max-width: 200px; /* Establece un ancho máximo para la imagen */
+    height: auto; /* Permite que la imagen conserve su proporción */
 }
+
 .ContactInfo {
-    position: absolute;
-    top: 10%;
-    left: 50%; /* Coloca el punto de partida en el centro horizontal */
-    transform: translateX(-50%); /* Centra el contenido horizontalmente */
-    display: flex;
-    align-items: center;
+    text-align: center; /* Centra el contenido en dispositivos móviles */
+    padding: 1rem;
 }
 
 .BotonIndex {
     position: absolute;
     top: 10%;
-    right: 10%;
+    right: 10px; /* Cambia el valor de right para ajustar el espacio */
     display: flex;
+    align-items: center;
+}
 
-  }
-  
-  .BotonIndex a {
+.BotonIndex a {
     margin-right: 10px;
-  }
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Agrega 's' después del valor numérico */
+}
 
-  .header-separator{
+.BotonIndex a:hover {
+    color: aqua;
+}
+
+/* Separador de encabezado */
+.header-separator {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ccc;
+    padding: 1rem;
+    text-align: center; /* Centra el texto en dispositivos móviles */
+}
 
-  }
-
-  .header-separator h2{
+.header-separator h2 {
     margin: 0;
-  }
+}
 
-  .navegation ul{
+/* Navegación */
+.navegation ul {
     list-style: none;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0;
     margin: 0;
-  }
- .navegation li{
-    margin-right: 0 15px;
- }
- .navegation a{
+}
+
+.navegation li {
+    margin-right: 15px; /* Ajusta el margen derecho */
+}
+
+.navegation a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
-    transition: color 0.3 ease;
- }
+    transition: color 0.3s ease; /* Agrega 's' después del valor numérico */
+}
 
-.navegation a:hover{
+.navegation a:hover {
     color: aqua;
 }
 

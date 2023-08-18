@@ -1,30 +1,39 @@
 const controller ={};
 
-controller.list = (req, res)=>{
-    req.getConnection((err, conn)=>{
-        conn.query('SELECT * FROM usuarios',(err, usuarios)=>{
-            if(err){
-                res.json(err);
-            }
-            res.render('index',{
-                data: usuarios
-            })
-        });
-    });
-};
+controller.list = async (req, res) => {
+    try {
+      const conn = await mysql2.createConnection(configura); // Crear conexión
+  
+      const [usuarios] = await conn.query('SELECT * FROM usuarios'); // Ejecutar consulta
+  
+      await conn.end(); // Cerrar conexión
+  
+      res.render('index', {
+        data: usuarios,
+      });
+    } catch (err) {
+      res.json(err);
+    }
+  };
 
 //Metodo para registrar usuario
-controller.save = (req, res)=>{
+controller.save = async (req, res) => {
     const data = req.body;
-    req.getConnection((err, conn) => {
-        conn.query('INSERT INTO usuarios set ?',[data],(err, usuarios)=>{
-            console.log(usuarios);
-            res.render('usuario/perfiluser')
-        });
-    })
+    try {
+      const conn = await mysql2.createConnection(configura); // Crear conexión
+  
+      await conn.query('INSERT INTO usuarios SET ?', [data]); // Ejecutar consulta
+  
+      await conn.end(); // Cerrar conexión
+  
+      res.render('usuario/perfiluser');
+    } catch (err) {
+      res.json(err);
+    }
+  };
     /*console.log(req.body); //recibimos los datos a traves de este objeto req.body
     res.render('admin')*/
-    };
+
 
 // Función para mostrar la vista de registro
 controller.mostrarRegistro = (req, res) => {
@@ -69,58 +78,59 @@ controller.mostrarcatalogo3 = (req, res) => {
 };
 
 // Función para mostrar la vista de tabla2.ejs
-controller.mostrarTabla2 = (req, res) => {
-    req.getConnection((err, conn) => {
-        if (err) {
-            return res.json(err);
-        }
-        const query = 'SELECT * FROM usuarios';
-        conn.query(query, (err, usuarios) => {
-            if (err) {
-                return res.json(err);
-            }
-            res.render('tablausers', {
-                data: usuarios // Pasa la variable 'data' a la vista
-            });
-        });
-    });
-};
-
-// Función para mostrar la vista de tabla1.ejs
-controller.mostrarTabla1 = (req, res) => {
-    req.getConnection((err, conn) => {
-        if (err) {
-            return res.json(err);
-        }
-        const query = 'SELECT * FROM pedidos';
-        conn.query(query, (err, pedidos) => {
-            if (err) {
-                return res.json(err);
-            }
-            res.render('tablapedidos', {
-                data: pedidos // Pasa la variable 'data' a la vista
-            });
-        });
-    });
-};
-
-//Funcion para mostrar admin.ejs con la
-controller.mostrarAdmin = (req, res) => {
-    req.getConnection((err, conn) => {
-        if (err) {
-            return res.json(err);
-        }
-        const query = 'SELECT * FROM productos';
-        conn.query(query, (err, productos) => {
-            if (err) {
-                return res.json(err);
-            }
-            res.render('admin', {
-                data: productos // Pasa la variable 'data' a la vista
-            });
-        });
-    });
-};
+controller.mostrarTabla2 = async (req, res) => {
+    try {
+      const conn = await mysql2.createConnection(configura); // Crear conexión
+  
+      const query = 'SELECT * FROM usuarios';
+      const [usuarios] = await conn.query(query); // Ejecutar consulta
+  
+      await conn.end(); // Cerrar conexión
+  
+      res.render('tablausers', {
+        data: usuarios, // Pasa la variable 'data' a la vista
+      });
+    } catch (err) {
+      res.json(err);
+    }
+  };
+  
+  // Método para mostrar la vista de tabla1.ejs
+  controller.mostrarTabla1 = async (req, res) => {
+    try {
+      const conn = await mysql2.createConnection(configura); // Crear conexión
+  
+      const query = 'SELECT * FROM pedidos';
+      const [pedidos] = await conn.query(query); // Ejecutar consulta
+  
+      await conn.end(); // Cerrar conexión
+  
+      res.render('tablapedidos', {
+        data: pedidos, // Pasa la variable 'data' a la vista
+      });
+    } catch (err) {
+      res.json(err);
+    }
+  };
+  
+  // Método para mostrar la vista de admin.ejs
+  controller.mostrarAdmin = async (req, res) => {
+    try {
+      const conn = await mysql2.createConnection(configura); // Crear conexión
+  
+      const query = 'SELECT * FROM productos';
+      const [productos] = await conn.query(query); // Ejecutar consulta
+  
+      await conn.end(); // Cerrar conexión
+  
+      res.render('admin', {
+        data: productos, // Pasa la variable 'data' a la vista
+      });
+    } catch (err) {
+      res.json(err);
+    }
+  };
+  
 
 //metodo para ingresar al perfil
 controller.autenticarLogin = (req, res) => {
@@ -134,42 +144,41 @@ controller.autenticarLogin = (req, res) => {
 };
 
 //Funcion para mostrar admin.ejs esta funcion va de la mano con la funcion debajo
-controller.mostrarAdmin = (req, res) => {
-    req.getConnection((err, conn) => {
-        if (err) {
-            return res.json(err);
-        }
-        const query = 'SELECT * FROM productos';
-        conn.query(query, (err, productos) => {
-            if (err) {
-                return res.json(err);
-            }
-            res.render('admin', {
-                data: productos // Pasa la variable 'data' a la vista
-            });
-        });
-    });
-};
+controller.mostrarAdmin = async (req, res) => {
+    try {
+      const conn = await mysql2.createConnection(configura); // Crear conexión
+  
+      const query = 'SELECT * FROM productos';
+      const [productos] = await conn.query(query); // Ejecutar consulta
+  
+      await conn.end(); // Cerrar conexión
+  
+      res.render('admin', {
+        data: productos, // Pasa la variable 'data' a la vista
+      });
+    } catch (err) {
+      res.json(err);
+    }
+  };
+  
 
 //Metodo post insertar producto a la tabla productos de admin
-controller.insertarProducto = (req, res) => {
-    const { nombre, descripcion, precio } = req.body;
-
-    req.getConnection((err, conn) => {
-        if (err) {
-            return res.json(err);
-        }
-
-        const query = 'INSERT INTO productos (nombre, descripcion, precio) VALUES (?, ?, ?)';
-        conn.query(query, [nombre, descripcion, precio], (err, result) => {
-            if (err) {
-                return res.json(err);
-            }
-
-            res.redirect('/admin'); // Redirecciona a la página de admin después de la inserción
-        });
-    });
-};
-
+controller.insertarProducto = async (req, res) => {
+    try {
+      const { nombre, descripcion, precio } = req.body;
+  
+      const conn = await mysql2.createConnection(configura); // Crear conexión
+  
+      const query = 'INSERT INTO productos (nombre, descripcion, precio) VALUES (?, ?, ?)';
+      const result = await conn.query(query, [nombre, descripcion, precio]); // Ejecutar consulta
+  
+      await conn.end(); // Cerrar conexión
+  
+      res.redirect('/admin'); // Redirecciona a la página de admin después de la inserción
+    } catch (err) {
+      res.json(err);
+    }
+  };
+  
 
 module.exports = controller;

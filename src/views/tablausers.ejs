@@ -1,0 +1,34 @@
+<%- include('partials/_header') %>
+
+</section>
+<div class="sidebar">
+    <ul>
+        <li><a href="/tablausers">Usuarios</a></li>
+        <li><a href="/admin">Productos</a></li>
+        <li><a href="/tablapedidos">Pedidos</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(usuarios => { %>
+            <tr>
+                <td><%= usuarios.id %></td>
+                <td><%= usuarios.nombre %></td>
+                <td><%= usuarios.phone %></td>
+                <td><%= usuarios.correo %></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
+<%- include('partials/_footer') %>

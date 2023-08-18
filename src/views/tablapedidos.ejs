@@ -1,0 +1,30 @@
+<%- include('partials/_header') %>
+<div class="sidebar">
+    <ul>
+        <li><a href="/tablausers">Usuarios</a></li>
+        <li><a href="/admin">Productos</a></li>
+        <li><a href="/tablapedidos">Pedidos</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>usuario_id</th>
+                <th>fecha pedido</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(pedidos => { %>
+            <tr>
+                <td><%= pedidos.id %></td>
+                <td><%= pedidos.usuario_id %></td>
+                <td><%= pedidos.fecha %></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
+<%- include('partials/_footer') %>

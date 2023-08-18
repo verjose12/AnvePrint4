@@ -1,0 +1,66 @@
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 1%;
+}
+
+.Logo img{
+    width: 70%;
+}
+.ContactInfo {
+    position: absolute;
+    top: 10%;
+    left: 50%; /* Coloca el punto de partida en el centro horizontal */
+    transform: translateX(-50%); /* Centra el contenido horizontalmente */
+    display: flex;
+    align-items: center;
+}
+
+.BotonIndex {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    display: flex;
+
+  }
+  
+  .BotonIndex a {
+    margin-right: 10px;
+  }
+
+  .header-separator{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+
+  }
+
+  .header-separator h2{
+    margin: 0;
+  }
+
+  .navegation ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+ .navegation li{
+    margin-right: 0 15px;
+ }
+ .navegation a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3 ease;
+ }
+
+.navegation a:hover{
+    color: aqua;
+}
+
+
+ 

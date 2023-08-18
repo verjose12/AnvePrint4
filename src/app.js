@@ -12,7 +12,7 @@ const usuariosRoutes = require('./routes/usuarios');
 
 //settings
 
-app.set('port', process.env.PORT|| 3001);
+//app.set('PORT', process.env.PORT|| 3001);
 // Configuración de EJS como motor de plantillas, 
 app.set('view engine', 'ejs');
 //buscar en automatico las vistas en la carpeta "views":
@@ -52,6 +52,6 @@ app.use('/', usuariosRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 
 //coneccion servidor
-app.listen(configura.port, () => {
-  console.log(`Servidor escuchando en esta ruta http://localhost:${configura.port}`);
+app.listen(configura.PORT, () => {
+  console.log(`Servidor escuchando en esta ruta http://localhost:${configura.PORT}`);
 });

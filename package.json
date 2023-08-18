@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/app.js"
+    "start": "node src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -13,10 +13,12 @@
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-myconnection": "^1.0.4",
+    "express-mysql-session": "^3.0.0",
     "express-session": "^1.17.3",
     "mime": "^3.0.0",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

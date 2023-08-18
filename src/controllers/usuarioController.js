@@ -1,5 +1,21 @@
 const controller ={};
 
+
+controller.connectAndRedirect = async (req, res) => {
+  try {
+    const connection = await mysql.createConnection(config);
+
+    // Realizar operaciones en la base de datos si es necesario
+
+    await connection.end(); // Cerrar la conexión
+
+    res.redirect('/index'); // Redirigir a la vista 'index'
+  } catch (err) {
+    res.json(err);
+  }
+};
+
+
 controller.list = async (req, res) => {
     try {
       const conn = await mysql2.createConnection(configura); // Crear conexión
